@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WarehouseController;
 use App\Http\Controllers\WorkerController;
+use App\Models\Warehouse;
 
 Route::get('/', function () {
     return view('dashboard');
@@ -65,6 +67,16 @@ Route::middleware('check')->group(function () {
         Route::get('/{worker}/edit', [WorkerController::class, 'edit'])->name('workers.edit');
         Route::put('/{worker}', [WorkerController::class, 'update'])->name('workers.update');
         Route::delete('/{worker}', [WorkerController::class, 'destroy'])->name('workers.destroy');
+    });
+
+    Route::prefix('warehouses')->group(function (){
+        Route::get('/' , [WarehouseController::class , 'index'])->name('warehouses.index');
+        Route::get('/create' , [WarehouseController::class , 'create'])->name('warehouses.create');
+        Route::post('/' , [WarehouseController::class , 'store'])->name('warehouses.store');
+        Route::get('/{warehouse}/edit' , [WarehouseController::class , 'edit'])->name('warehouses.edit');
+        Route::get('/warehouse' , [WarehouseController::class , 'show'])->name('warehouses.show');
+        Route::put('/{warehouse}', [WorkerController::class, 'update'])->name('warehouses.update');
+        Route::delete('/{warehouse}' , [WarehouseController::class , 'destroy'])->name('warehouses.destroy');
     });
 });
 

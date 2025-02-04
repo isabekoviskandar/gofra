@@ -115,6 +115,13 @@
                                         <p>Groups</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('warehouses.index') }}"
+                                        class="nav-link {{ request()->is('warehouses*') ? 'active' : '' }}">
+                                        <i class="fas fa-car"></i>
+                                        <p>Warehouses</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
