@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\WarehouseCreateRequest;
+use App\Http\Requests\WarehouseUpdateRequest;
 use App\Models\User;
 use App\Models\Warehouse;
 use Illuminate\Http\Request;
@@ -30,15 +32,9 @@ class WarehouseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(WarehouseCreateRequest $request)
     {
-        $request->validate([
-            'user_id' => 'required|integer',
-            'name' => 'required|string|max:255',
-        ]);
-
-        Warehouse::create($request->only(['user_id', 'name']));
-
+        Warehouse::create($request->validated());
         return redirect()->route('warehouses.index')->with('success', 'Warehouse created successfully.');
     }
 
@@ -62,19 +58,9 @@ class WarehouseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Warehouse $warehouse)
+    public function update(WarehouseUpdateRequest $request , Warehouse $warehouse)
     {
-        $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'name' => 'required|string|max:255',
-            'is_active' => 'required',
-        ]);
-    
-        $warehouse->update([
-            'user_id' => $request->user_id,
-            'name' => $request->name,
-            'is_active' => $request->is_active,
-        ]);
+        $warehouse->update($request->validated());
     
         return redirect()->route('warehouses.index')->with('success', 'Warehouse updated successfully.');
     }

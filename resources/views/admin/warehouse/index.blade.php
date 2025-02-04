@@ -35,4 +35,74 @@
             </tbody>
         </table>
     </div>
+
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .table {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .table th {
+            background: #007bff;
+            color: #fff;
+            text-align: center;
+        }
+
+        .table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .btn {
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            border-color: #ffc107;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .btn-sm {
+            font-size: 14px;
+            margin: 2px;
+        }
+
+        form {
+            display: inline;
+        }
+
+        @media (max-width: 768px) {
+            .table th, .table td {
+                font-size: 14px;
+            }
+        }
+    </style>
 @endsection

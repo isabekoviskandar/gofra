@@ -26,10 +26,53 @@
 
             <div class="form-group">
                 <label for="is_active">Is Active:</label>
-                <input type="checkbox" name="is_active" value="1" {{ $warehouse->is_active ? 'checked' : '' }}>
+                <select name="is_active" class="form-control">
+                    <option value="">Select activity</option>
+                    <option value="1" {{ $warehouse->is_active == 1 ? 'selected' : '' }}>Active</option>
+                    <option value="0" {{ $warehouse->is_active == 0 ? 'selected' : '' }}>Inactive</option>
+                </select>
             </div>
 
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
+
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+    </style>
 @endsection

@@ -75,7 +75,7 @@ Route::middleware('check')->group(function () {
         Route::post('/' , [WarehouseController::class , 'store'])->name('warehouses.store');
         Route::get('/{warehouse}/edit' , [WarehouseController::class , 'edit'])->name('warehouses.edit');
         Route::get('/warehouse' , [WarehouseController::class , 'show'])->name('warehouses.show');
-        Route::put('/{warehouse}', [WorkerController::class, 'update'])->name('warehouses.update');
+        Route::put('/{warehouse}', [WarehouseController::class, 'update'])->name('warehouses.update');
         Route::delete('/{warehouse}' , [WarehouseController::class , 'destroy'])->name('warehouses.destroy');
     });
 });
