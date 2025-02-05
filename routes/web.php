@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RowMaterialController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SectionController;
@@ -87,6 +88,15 @@ Route::middleware('check')->group(function () {
         Route::get('/{invoice}/edit' , [InvoiceController::class, 'edit'])->name('invoices.edit');
         Route::put('/{invoice}', [InvoiceController::class, 'update'])->name('invoices.update');
         Route::delete('/{invoice}', [InvoiceController::class, 'destroy'])->name('invoices.destroy');
+    });
+
+    Route::prefix('/row_materials')->group(function (){
+        Route::get('/' , [RowMaterialController::class, 'index'])->name('row_materials.index');
+        Route::get('/create' , [RowMaterialController::class, 'create'])->name('row_materials.create');
+        Route::post('/' , [RowMaterialController::class, 'store'])->name('row_materials.store');
+        Route::get('/{row_material}/edit' , [RowMaterialController::class, 'edit'])->name('row_materials.edit');
+        Route::put('/{row_material}', [RowMaterialController::class, 'update'])->name('row_materials.update');
+        Route::delete('/{row_material}', [RowMaterialController::class, 'destroy'])->name('row_materials.destroy');
     });
 });
 

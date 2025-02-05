@@ -140,6 +140,14 @@
                         </li>
 
                         <li class="nav-item">
+                            <a href="{{ route('row_materials.index') }}"
+                               class="nav-link {{ request()->is('row_materials*') ? 'active' : '' }}">
+                                <i class="fas fa-user"></i>
+                                <p>row_materials</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a href="{{ route('invoices.index') }}"
                                class="nav-link {{ request()->is('invoices*') ? 'active' : '' }}">
                                 <i class="fas fa-pencil"></i>
