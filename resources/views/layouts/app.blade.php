@@ -115,13 +115,6 @@
                                         <p>Groups</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('warehouses.index') }}"
-                                        class="nav-link {{ request()->is('warehouses*') ? 'active' : '' }}">
-                                        <i class="fas fa-car"></i>
-                                        <p>Warehouses</p>
-                                    </a>
-                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -136,6 +129,21 @@
                                 class="nav-link {{ request()->is('workers*') ? 'active' : '' }}">
                                 <i class="fas fa-users-cog"></i>
                                 <p>Workers</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('warehouses.index') }}"
+                               class="nav-link {{ request()->is('warehouses*') ? 'active' : '' }}">
+                                <i class="fas fa-car"></i>
+                                <p>Warehouses</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('invoices.index') }}"
+                               class="nav-link {{ request()->is('invoices*') ? 'active' : '' }}">
+                                <i class="fas fa-pencil"></i>
+                                <p>Invoices</p>
                             </a>
                         </li>
                         <li class="list-group-item">

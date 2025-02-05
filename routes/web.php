@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PermissionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
@@ -77,6 +78,15 @@ Route::middleware('check')->group(function () {
         Route::get('/warehouse' , [WarehouseController::class , 'show'])->name('warehouses.show');
         Route::put('/{warehouse}', [WarehouseController::class, 'update'])->name('warehouses.update');
         Route::delete('/{warehouse}' , [WarehouseController::class , 'destroy'])->name('warehouses.destroy');
+    });
+
+    Route::prefix('/invoices')->group(function (){
+        Route::get('/' , [InvoiceController::class, 'index'])->name('invoices.index');
+        Route::get('/create' , [InvoiceController::class, 'create'])->name('invoices.create');
+        Route::post('/' , [InvoiceController::class, 'store'])->name('invoices.store');
+        Route::get('/{invoice}/edit' , [InvoiceController::class, 'edit'])->name('invoices.edit');
+        Route::put('/{invoice}', [InvoiceController::class, 'update'])->name('invoices.update');
+        Route::delete('/{invoice}', [InvoiceController::class, 'destroy'])->name('invoices.destroy');
     });
 });
 
