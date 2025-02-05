@@ -10,9 +10,14 @@ class Invoice extends Model
     use HasFactory;
 
     protected $fillable =
-        [
-            'company_name',
-            'date',
-            'text',
-        ];
+    [
+        'company_name',
+        'date',
+        'text',
+    ];
+
+    public function row_invoice()
+    {
+        return $this->hasMany(RowInvoice::class);
+    }
 }

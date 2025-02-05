@@ -31,5 +31,9 @@ class RowMaterial extends Model
         return $slug;
     }
 
+    public function row_invoice()
+    {
+        return $this->hasMany(RowInvoice::class);
+    }
 }
 

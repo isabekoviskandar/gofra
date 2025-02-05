@@ -154,6 +154,13 @@
                                 <p>Invoices</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('row_invoices.index') }}"
+                               class="nav-link {{ request()->is('row_invoices*') ? 'active' : '' }}">
+                                <i class="fas fa-car"></i>
+                                <p>Row invoices</p>
+                            </a>
+                        </li>
                         <li class="list-group-item">
                             <form action="{{ route('logout') }}" method="POST"
                                 class="d-flex align-items-center w-100">

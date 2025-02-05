@@ -7,6 +7,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RowMaterialController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RowInvoiceController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WarehouseController;
@@ -97,6 +98,15 @@ Route::middleware('check')->group(function () {
         Route::get('/{row_material}/edit' , [RowMaterialController::class, 'edit'])->name('row_materials.edit');
         Route::put('/{row_material}', [RowMaterialController::class, 'update'])->name('row_materials.update');
         Route::delete('/{row_material}', [RowMaterialController::class, 'destroy'])->name('row_materials.destroy');
+    });
+
+    Route::prefix('/row_invoices')->group(function (){
+        Route::get('/' , [RowInvoiceController::class, 'index'])->name('row_invoices.index');
+        Route::get('/create' , [RowInvoiceController::class, 'create'])->name('row_invoices.create');
+        Route::post('/' , [RowInvoiceController::class, 'store'])->name('row_invoices.store');
+        Route::get('/{row_invoice}/edit' , [RowInvoiceController::class, 'edit'])->name('row_invoices.edit');
+        Route::put('/{row_invoice}', [RowInvoiceController::class, 'update'])->name('row_invoices.update');
+        Route::delete('/{row_invoice}', [RowInvoiceController::class, 'destroy'])->name('row_invoices.destroy');
     });
 });
 
