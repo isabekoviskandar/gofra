@@ -16,7 +16,7 @@ class Invoice extends Model
         'text',
     ];
 
-    public function row_invoice()
+    public function rowInvoices()
     {
         return $this->hasMany(RowInvoice::class);
     }

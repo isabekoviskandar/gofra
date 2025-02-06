@@ -22,9 +22,19 @@ class InvoiceCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'company_name' => 'required|string',
-            'date'=>'required|date',
+            'company_name' => 'required|string|max:255',
+            'date' => 'required|date',
             'text' => 'required|string',
+            'row_material_id' => 'required|array',
+            'row_material_id.*' => 'required|exists:row_materials,id',
+            'unit' => 'required|array',
+            'unit.*' => 'required|string|max:255',
+            'quantity' => 'required|array',
+            'quantity.*' => 'required|integer|min:1',
+            'price' => 'required|array',
+            'price.*' => 'required|numeric|min:0',
+            'summ' => 'required|array',
+            'summ.*' => 'required|numeric|min:0'
         ];
     }
 }

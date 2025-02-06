@@ -87,6 +87,7 @@ Route::middleware('check')->group(function () {
         Route::get('/create' , [InvoiceController::class, 'create'])->name('invoices.create');
         Route::post('/' , [InvoiceController::class, 'store'])->name('invoices.store');
         Route::get('/{invoice}/edit' , [InvoiceController::class, 'edit'])->name('invoices.edit');
+        Route::get('/invoices/{invoice}', [InvoiceController::class, 'show'])->name('invoices.show');
         Route::put('/{invoice}', [InvoiceController::class, 'update'])->name('invoices.update');
         Route::delete('/{invoice}', [InvoiceController::class, 'destroy'])->name('invoices.destroy');
     });

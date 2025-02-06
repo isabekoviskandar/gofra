@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <h3>Row Invoices</h3>
-            <a href="{{ route('row_invoices.create') }}" class="btn btn-primary">Add New</a>
+        <div class="  align-items-center">
+            {{-- <h3>Row Invoices</h3> --}}
+            <a href="{{ route('row_invoices.create') }}" class="btn btn-primary m-2">Add New</a>
         </div>
         <div class="card-body">
             <table class="table">
@@ -32,7 +32,7 @@
                         <td>{{ $row_invoice->price }}</td>
                         <td>{{ $row_invoice->summ }}</td>
                         <td>
-                            <div class="btn-group">
+                            <div class="btn-group ml-3">
                                 <a href="{{ route('row_invoices.edit', $row_invoice->id) }}" 
                                    class="btn btn-sm btn-info">Edit</a>
                                 <form action="{{ route('row_invoices.destroy', $row_invoice->id) }}" 
@@ -40,7 +40,7 @@
                                       onsubmit="return confirm('Are you sure you want to delete this item?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                    <button type="submit" class="btn btn-sm btn-danger ml-3">Delete</button>
                                 </form>
                             </div>
                         </td>
