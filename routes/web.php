@@ -13,8 +13,6 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WarehouseController;
 use App\Http\Controllers\WorkerController;
-use App\Models\Machine;
-use App\Models\Warehouse;
 
 Route::get('/', function () {
     return view('dashboard');

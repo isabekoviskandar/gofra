@@ -35,5 +35,20 @@ class RowMaterial extends Model
     {
         return $this->hasMany(RowInvoice::class);
     }
+
+    public function warehouse_value()
+    {
+        return $this->hasMany(WarehouseValue::class , 'row_material_id');
+    }
+
+    public function history()
+    {
+        return $this->hasMany(History::class , 'row_material_id');
+    }
+
+    public function product_ingredient()
+    {
+        return $this->hasMany(ProductIngredient::class , 'row_material_id');
+    }
 }
 

@@ -20,4 +20,9 @@ class Warehouse extends Model
     {
         return $this->belongsTo(User::class , 'user_id');
     }
+
+    public function warehouse_value()
+    {
+        return $this->hasOne(WarehouseValue::class , 'warehouse_id');
+    }
 }

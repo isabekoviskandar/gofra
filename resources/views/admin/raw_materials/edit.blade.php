@@ -8,10 +8,13 @@
             @method('PUT')
             <div class="mb-3">
                 <label class="form-label">Name</label>
-                <input type="text" name="name" value="{{ $rowMaterial->name }}" class="form-control" required>
+                <input type="text" name="name" value="{{ old('name', $rowMaterial->name) }}" 
+                       class="form-control @error('name') is-invalid @enderror" required>
+                @error('name')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
-
     </div>
 @endsection

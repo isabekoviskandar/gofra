@@ -21,10 +21,10 @@
                     <td>{{ $material->slug }}</td>
                     <td>
                         <a href="{{ route('row_materials.edit', $material->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="{{ route('row_materials.destroy', $material->id) }}" method="POST" style="display:inline;">
+                        {{-- <form action="{{ route('row_materials.destroy', $material->id) }}" method="POST" style="display:inline;">
                             @csrf @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                        </form>
+                        </form> --}}
                     </td>
                 </tr>
             @endforeach
