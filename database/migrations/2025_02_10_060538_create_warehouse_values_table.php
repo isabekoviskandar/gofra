@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('warehouse_id')->constrained('warehouses')->onDelete('cascade');
             $table->foreignId('row_material_id')->constrained('row_materials')->onDelete('cascade');
+            $table->double('value');
+            $table->integer('type');
             $table->timestamps();
         });
     }

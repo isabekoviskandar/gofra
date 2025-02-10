@@ -72,51 +72,52 @@ Route::middleware('check')->group(function () {
         Route::delete('/{worker}', [WorkerController::class, 'destroy'])->name('workers.destroy');
     });
 
-    Route::prefix('warehouses')->group(function (){
-        Route::get('/' , [WarehouseController::class , 'index'])->name('warehouses.index');
-        Route::get('/create' , [WarehouseController::class , 'create'])->name('warehouses.create');
-        Route::post('/' , [WarehouseController::class , 'store'])->name('warehouses.store');
-        Route::get('/{warehouse}/edit' , [WarehouseController::class , 'edit'])->name('warehouses.edit');
-        Route::get('/warehouse' , [WarehouseController::class , 'show'])->name('warehouses.show');
+    Route::prefix('warehouses')->group(function () {
+        Route::get('/', [WarehouseController::class, 'index'])->name('warehouses.index');
+        Route::get('/create', [WarehouseController::class, 'create'])->name('warehouses.create');
+        Route::post('/', [WarehouseController::class, 'store'])->name('warehouses.store');
+        Route::get('/{warehouse}/edit', [WarehouseController::class, 'edit'])->name('warehouses.edit');
+        Route::get('/{warehouse}', [WarehouseController::class, 'show'])->name('warehouses.show');
         Route::put('/{warehouse}', [WarehouseController::class, 'update'])->name('warehouses.update');
-        Route::delete('/{warehouse}' , [WarehouseController::class , 'destroy'])->name('warehouses.destroy');
+        Route::delete('/{warehouse}', [WarehouseController::class, 'destroy'])->name('warehouses.destroy');
     });
 
-    Route::prefix('/invoices')->group(function (){
-        Route::get('/' , [InvoiceController::class, 'index'])->name('invoices.index');
-        Route::get('/create' , [InvoiceController::class, 'create'])->name('invoices.create');
-        Route::post('/' , [InvoiceController::class, 'store'])->name('invoices.store');
-        Route::get('/{invoice}/edit' , [InvoiceController::class, 'edit'])->name('invoices.edit');
+    Route::prefix('/invoices')->group(function () {
+        Route::get('/', [InvoiceController::class, 'index'])->name('invoices.index');
+        Route::get('/create', [InvoiceController::class, 'create'])->name('invoices.create');
+        Route::post('/', [InvoiceController::class, 'store'])->name('invoices.store');
+        Route::get('/{invoice}/edit', [InvoiceController::class, 'edit'])->name('invoices.edit');
         Route::get('/invoices/{invoice}', [InvoiceController::class, 'show'])->name('invoices.show');
         Route::put('/{invoice}', [InvoiceController::class, 'update'])->name('invoices.update');
         Route::delete('/{invoice}', [InvoiceController::class, 'destroy'])->name('invoices.destroy');
+
+        Route::get('/invoices/{invoice}/move', [InvoiceController::class, 'moveMaterials'])->name('invoices.moveMaterials');
     });
 
-    Route::prefix('/row_materials')->group(function (){
-        Route::get('/' , [RowMaterialController::class, 'index'])->name('row_materials.index');
-        Route::get('/create' , [RowMaterialController::class, 'create'])->name('row_materials.create');
-        Route::post('/' , [RowMaterialController::class, 'store'])->name('row_materials.store');
-        Route::get('/{row_material}/edit' , [RowMaterialController::class, 'edit'])->name('row_materials.edit');
+    Route::prefix('/row_materials')->group(function () {
+        Route::get('/', [RowMaterialController::class, 'index'])->name('row_materials.index');
+        Route::get('/create', [RowMaterialController::class, 'create'])->name('row_materials.create');
+        Route::post('/', [RowMaterialController::class, 'store'])->name('row_materials.store');
+        Route::get('/{row_material}/edit', [RowMaterialController::class, 'edit'])->name('row_materials.edit');
         Route::put('/{row_material}', [RowMaterialController::class, 'update'])->name('row_materials.update');
         Route::delete('/{row_material}', [RowMaterialController::class, 'destroy'])->name('row_materials.destroy');
     });
 
-    Route::prefix('/row_invoices')->group(function (){
-        Route::get('/' , [RowInvoiceController::class, 'index'])->name('row_invoices.index');
-        Route::get('/create' , [RowInvoiceController::class, 'create'])->name('row_invoices.create');
-        Route::post('/' , [RowInvoiceController::class, 'store'])->name('row_invoices.store');
-        Route::get('/{row_invoice}/edit' , [RowInvoiceController::class, 'edit'])->name('row_invoices.edit');
+    Route::prefix('/row_invoices')->group(function () {
+        Route::get('/', [RowInvoiceController::class, 'index'])->name('row_invoices.index');
+        Route::get('/create', [RowInvoiceController::class, 'create'])->name('row_invoices.create');
+        Route::post('/', [RowInvoiceController::class, 'store'])->name('row_invoices.store');
+        Route::get('/{row_invoice}/edit', [RowInvoiceController::class, 'edit'])->name('row_invoices.edit');
         Route::put('/{row_invoice}', [RowInvoiceController::class, 'update'])->name('row_invoices.update');
         Route::delete('/{row_invoice}', [RowInvoiceController::class, 'destroy'])->name('row_invoices.destroy');
     });
 
-    Route::prefix('/machines')->group(function(){
-        Route::get('/' , [MachineController::class , 'index'])->name('machines.index');
-        Route::get('/create' , [MachineController::class , 'create'])->name('machines.create');
-        Route::post('/' , [MachineController::class , 'store'])->name('machines.store');
-        Route::get('/{machine}/edit' , [MachineController::class , 'edit'])->name('machines.edit');
-        Route::put('/{machine}' , [MachineController::class , 'update'])->name('machines.update');
-        Route::delete('/{machine}' , [MachineController::class , 'destroy'])->name('machines.destroy');
+    Route::prefix('/machines')->group(function () {
+        Route::get('/', [MachineController::class, 'index'])->name('machines.index');
+        Route::get('/create', [MachineController::class, 'create'])->name('machines.create');
+        Route::post('/', [MachineController::class, 'store'])->name('machines.store');
+        Route::get('/{machine}/edit', [MachineController::class, 'edit'])->name('machines.edit');
+        Route::put('/{machine}', [MachineController::class, 'update'])->name('machines.update');
+        Route::delete('/{machine}', [MachineController::class, 'destroy'])->name('machines.destroy');
     });
 });
-

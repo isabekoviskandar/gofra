@@ -13,6 +13,8 @@ class WarehouseValue extends Model
     [
         'warehouse_id',
         'row_material_id',
+        'value',
+        'type',
     ];
 
     public function warehouse()

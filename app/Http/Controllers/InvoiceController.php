@@ -6,7 +6,6 @@ use App\Http\Requests\InvoiceCreateRequest;
 use App\Models\Invoice;
 use App\Models\RowInvoice;
 use App\Models\RowMaterial;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -53,6 +52,7 @@ class InvoiceController extends Controller
         $invoice->load(['rowInvoices.row_material']);
         return view('admin.invoices.show', compact('invoice'));
     }
+    
     public function edit(Invoice $invoice)
     {
         $invoice = Invoice::findOrFail($invoice->id);
@@ -67,8 +67,27 @@ class InvoiceController extends Controller
 
     public function destroy(Invoice $invoice)
     {
-        $invoice = Invoice::findOrFail($invoice->id);
         $invoice->delete();
         return redirect()->route('invoices.index');
     }
+
+    public function moveMaterials(Request $request)
+    {
+        $request->validate([
+            'from_invoice_id' => 'required|exists:invoices,id',
+            'to_invoice_id' => 'required|exists:invoices,id|different:from_invoice_id',
+            'row_invoice_id' => 'required|array',
+            'row_invoice_id.*' => 'exists:row_invoices,id',
+        ]);
+
+        DB::transaction(function () use ($request) {
+            foreach ($request->row_invoice_id as $rowId) {
+                $rowInvoice = RowInvoice::findOrFail($rowId);
+                $rowInvoice->update(['invoice_id' => $request->to_invoice_id]);
+            }
+        });
+
+        return redirect()->route('invoices.show', $request->to_invoice_id);
+    }
+    
 }

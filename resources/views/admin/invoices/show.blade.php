@@ -71,6 +71,7 @@
             
             <div class="mt-3 text-center">
                 <a href="{{ route('invoices.index') }}" class="btn btn-secondary">Back to List</a>
+                <a href="{{ route('invoices.moveMaterials', $invoice->id) }}" class="btn btn-warning">Move Materials</a>
             </div>
         </div>
     </div>
