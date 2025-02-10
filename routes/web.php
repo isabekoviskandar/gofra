@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\MachineController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RowMaterialController;
 use Illuminate\Support\Facades\Route;
@@ -12,6 +13,7 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WarehouseController;
 use App\Http\Controllers\WorkerController;
+use App\Models\Machine;
 use App\Models\Warehouse;
 
 Route::get('/', function () {
@@ -108,6 +110,15 @@ Route::middleware('check')->group(function () {
         Route::get('/{row_invoice}/edit' , [RowInvoiceController::class, 'edit'])->name('row_invoices.edit');
         Route::put('/{row_invoice}', [RowInvoiceController::class, 'update'])->name('row_invoices.update');
         Route::delete('/{row_invoice}', [RowInvoiceController::class, 'destroy'])->name('row_invoices.destroy');
+    });
+
+    Route::prefix('/machines')->group(function(){
+        Route::get('/' , [MachineController::class , 'index'])->name('machines.index');
+        Route::get('/create' , [MachineController::class , 'create'])->name('machines.create');
+        Route::post('/' , [MachineController::class , 'store'])->name('machines.store');
+        Route::get('/{machine}/edit' , [MachineController::class , 'edit'])->name('machines.edit');
+        Route::put('/{machine}' , [MachineController::class , 'update'])->name('machines.update');
+        Route::delete('/{machine}' , [MachineController::class , 'destroy'])->name('machines.destroy');
     });
 });
 
